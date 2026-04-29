@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOVA / OS — Create Account</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <div class="noise"></div>
+
+    <aside class="brand">
+      <div class="brand-top">
+        <div class="logo">
+          <span class="dot"></span>
+          <span>NOVA / OS</span>
+        </div>
+        <div class="crumbs">v 04.29 · BUILD 2026</div>
+      </div>
+
+      <div class="orb"></div>
+
+      <div class="headline">
+        <h1>
+          <span class="stroke">JOIN</span>
+          <span class="glow">THE NIGHT</span>
+          <br>
+          <span>SHIFT.</span>
+        </h1>
+        <p>
+          A members-only console for builders who think in dark mode. Spin up
+          an identity, lock in your handle, and ship before sunrise.
+        </p>
+      </div>
+
+      <div class="brand-bottom">
+        <div class="ticker">
+          <span>UPTIME <b>99.99%</b></span>
+          <span>MEMBERS <b>14,208</b></span>
+        </div>
+        <span>LOCAL TIME <b id="clock">--:--:--</b></span>
+      </div>
+    </aside>
+
+    <main class="panel">
+      <div class="panel-head">
+        <h2>Create Account <small>// new identity</small></h2>
+        <div class="step-pills" role="group" aria-label="progress">
+          <span data-pill="0"></span>
+          <span data-pill="1"></span>
+          <span data-pill="2"></span>
+        </div>
+      </div>
+
+      <form id="signupForm" novalidate autocomplete="on">
+        <!-- Row 1 -->
+        <div class="field col-3">
+          <label for="prefix">Prefix</label>
+          <div class="input-wrap">
+            <select id="prefix" name="prefix" required>
+              <option value="">--</option>
+              <option value="Mr">Mr.</option>
+              <option value="Ms">Ms.</option>
+              <option value="Mrs">Mrs.</option>
+              <option value="Dr">Dr.</option>
+              <option value="Mx">Mx.</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field col-4">
+          <label>First Name</label>
+          <div class="input-wrap">
+            <input type="text" id="firstName" name="firstName" placeholder="Ada" autocomplete="given-name" required>
+          </div>
+        </div>
+
+        <div class="field col-5">
+          <label>Last Name</label>
+          <div class="input-wrap">
+            <input type="text" id="lastName" name="lastName" placeholder="Lovelace" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="field col-7">
+          <label>Username <span class="hint">unique handle</span></label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
+              <circle cx="12" cy="8" r="4" />
+            </svg>
+            <input type="text" id="username" name="username" placeholder="@nightowl" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="field col-5">
+          <label>Date of Birth <span class="hint">YYYY-MM-DD</span></label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M16 3v4M8 3v4M3 11h18" />
+            </svg>
+            <input type="date" id="dob" name="dob" title="Date of Birth" required>
+            <span id="ageBadge" class="age-badge">AGE · 0</span>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="field col-6">
+          <label>Password <span class="hint">8+ chars</span></label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="new-password" required>
+            <button type="button" class="toggle-eye" data-target="password" aria-label="toggle password">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+          <div id="strength" class="strength s0">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="field col-6">
+          <label>
+            Confirm Password
+            <span id="strengthLabel" class="hint"></span>
+          </label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4" />
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input type="password" id="confirm" name="confirm" placeholder="••••••••" autocomplete="new-password" required>
+            <button type="button" class="toggle-eye" data-target="confirm" aria-label="toggle confirm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+          <div id="matchRow" class="match-row"></div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="field col-12">
+          <label>Gender</label>
+          <div class="segment" id="gender">
+            <label>
+              <input type="radio" name="gender" value="male" required>
+              <span>Male</span>
+            </label>
+            <label>
+              <input type="radio" name="gender" value="female" required>
+              <span>Female</span>
+            </label>
+            <label>
+              <input type="radio" name="gender" value="other" required>
+              <span>Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="field col-5">
+          <label>Contact No.</label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <input type="tel" id="contact" name="contact" placeholder="+1 555 010 2480" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="field col-7">
+          <label>Email Address</label>
+          <div class="input-wrap has-icon">
+            <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <input type="email" id="email" name="email" placeholder="ada@nova.os" autocomplete="email" required>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="actions">
+          <label class="terms">
+            <input type="checkbox" id="agree">
+            <span class="box"></span>
+            <span>I agree to the <a href="#terms">Terms</a> &amp; <a href="#privacy">Privacy</a> policy.</span>
+          </label>
+
+          <button type="submit" id="submitBtn" class="submit" disabled>
+            Launch Account
+            <span class="arrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </form>
+
+      <div id="success" class="success">
+        <div class="check">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#05060a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3 id="successName">Welcome aboard.</h3>
+        <p>identity provisioned · channel open</p>
+        <button type="button" id="resetBtn">Create another</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
